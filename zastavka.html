@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #e8e0d0;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, #f2ebe0 0%, #ddd4c0 40%, #c8bba8 75%, #b8a990 100%);
+  }
+
+  /* Subtle linen/paper texture via SVG noise */
+  .texture {
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+
+  /* ─── Botanical SVG overlays ─── */
+  .botanical {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* ─── Main content ─── */
+  .content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 0 96px; /* 5% safe zone */
+  }
+
+  .tagline {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 22px;
+    letter-spacing: 0.35em;
+    color: #8a7d6a;
+    text-transform: uppercase;
+    margin-bottom: 52px;
+  }
+
+  .divider-top {
+    width: 340px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #a89880, transparent);
+    margin-bottom: 52px;
+  }
+
+  .names {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+  }
+
+  .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 148px;
+    line-height: 1;
+    color: #3d3428;
+    letter-spacing: 0.01em;
+  }
+
+  .ampersand {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 96px;
+    color: #a08060;
+    line-height: 1;
+    margin-top: 8px;
+  }
+
+  .divider-bottom {
+    width: 340px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #a89880, transparent);
+    margin-top: 52px;
+    margin-bottom: 40px;
+  }
+
+  .date {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 44px;
+    letter-spacing: 0.28em;
+    color: #6b5e4e;
+  }
+
+  .venue {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    font-size: 22px;
+    letter-spacing: 0.42em;
+    color: #9a8d7c;
+    text-transform: uppercase;
+    margin-top: 22px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Background gradient -->
+<div class="bg"></div>
+<div class="texture"></div>
+
+<!-- Botanical SVG -->
+<svg class="botanical" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <style>
+      .leaf { fill: none; stroke: #7a6e56; opacity: 0.22; }
+      .branch { fill: none; stroke: #8a7c62; opacity: 0.18; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <!-- ── Left bottom corner foliage ── -->
+  <g transform="translate(0,1080) rotate(-15, 0, 0)">
+    <!-- Main stem -->
+    <path class="branch" stroke-width="1.8" d="M -20,60 C 60,20 120,-30 180,-90"/>
+    <!-- Left sprigs -->
+    <path class="branch" stroke-width="1.2" d="M 40,34 C 30,10 10,-10 -10,-30"/>
+    <path class="branch" stroke-width="1.2" d="M 80,10 C 65,-12 50,-35 40,-60"/>
+    <path class="branch" stroke-width="1.2" d="M 118,-18 C 100,-42 88,-66 82,-90"/>
+    <!-- Leaves on left sprigs -->
+    <ellipse class="leaf" stroke-width="1" cx="-10" cy="-30" rx="14" ry="7" transform="rotate(-40,-10,-30)"/>
+    <ellipse class="leaf" stroke-width="1" cx="40" cy="-60" rx="14" ry="7" transform="rotate(-55,40,-60)"/>
+    <ellipse class="leaf" stroke-width="1" cx="82" cy="-90" rx="14" ry="7" transform="rotate(-65,82,-90)"/>
+    <!-- Right sprigs -->
+    <path class="branch" stroke-width="1.2" d="M 55,22 C 70,-2 88,-14 108,-18"/>
+    <path class="branch" stroke-width="1.2" d="M 95,-5 C 112,-22 132,-32 154,-30"/>
+    <path class="branch" stroke-width="1.2" d="M 135,-35 C 150,-54 168,-62 190,-58"/>
+    <ellipse class="leaf" stroke-width="1" cx="108" cy="-18" rx="13" ry="6" transform="rotate(20,108,-18)"/>
+    <ellipse class="leaf" stroke-width="1" cx="154" cy="-30" rx="13" ry="6" transform="rotate(15,154,-30)"/>
+    <ellipse class="leaf" stroke-width="1" cx="190" cy="-58" rx="13" ry="6" transform="rotate(10,190,-58)"/>
+    <!-- Small berries -->
+    <circle class="leaf" stroke-width="1" cx="50" cy="-75" r="4"/>
+    <circle class="leaf" stroke-width="1" cx="58" cy="-82" r="3"/>
+    <circle class="leaf" stroke-width="1" cx="44" cy="-86" r="3"/>
+  </g>
+
+  <!-- ── Right bottom corner foliage (mirrored) ── -->
+  <g transform="translate(1920,1080) scale(-1,1) rotate(-15, 0, 0)">
+    <path class="branch" stroke-width="1.8" d="M -20,60 C 60,20 120,-30 180,-90"/>
+    <path class="branch" stroke-width="1.2" d="M 40,34 C 30,10 10,-10 -10,-30"/>
+    <path class="branch" stroke-width="1.2" d="M 80,10 C 65,-12 50,-35 40,-60"/>
+    <path class="branch" stroke-width="1.2" d="M 118,-18 C 100,-42 88,-66 82,-90"/>
+    <ellipse class="leaf" stroke-width="1" cx="-10" cy="-30" rx="14" ry="7" transform="rotate(-40,-10,-30)"/>
+    <ellipse class="leaf" stroke-width="1" cx="40" cy="-60" rx="14" ry="7" transform="rotate(-55,40,-60)"/>
+    <ellipse class="leaf" stroke-width="1" cx="82" cy="-90" rx="14" ry="7" transform="rotate(-65,82,-90)"/>
+    <path class="branch" stroke-width="1.2" d="M 55,22 C 70,-2 88,-14 108,-18"/>
+    <path class="branch" stroke-width="1.2" d="M 95,-5 C 112,-22 132,-32 154,-30"/>
+    <path class="branch" stroke-width="1.2" d="M 135,-35 C 150,-54 168,-62 190,-58"/>
+    <ellipse class="leaf" stroke-width="1" cx="108" cy="-18" rx="13" ry="6" transform="rotate(20,108,-18)"/>
+    <ellipse class="leaf" stroke-width="1" cx="154" cy="-30" rx="13" ry="6" transform="rotate(15,154,-30)"/>
+    <ellipse class="leaf" stroke-width="1" cx="190" cy="-58" rx="13" ry="6" transform="rotate(10,190,-58)"/>
+    <circle class="leaf" stroke-width="1" cx="50" cy="-75" r="4"/>
+    <circle class="leaf" stroke-width="1" cx="58" cy="-82" r="3"/>
+    <circle class="leaf" stroke-width="1" cx="44" cy="-86" r="3"/>
+  </g>
+
+  <!-- ── Left top corner ── -->
+  <g transform="translate(0,0) rotate(70, 0, 0)">
+    <path class="branch" stroke-width="1.5" d="M -20,60 C 60,20 120,-30 170,-80"/>
+    <path class="branch" stroke-width="1" d="M 40,34 C 30,10 10,-10 -10,-30"/>
+    <path class="branch" stroke-width="1" d="M 80,10 C 65,-12 50,-35 42,-58"/>
+    <ellipse class="leaf" stroke-width="0.9" cx="-10" cy="-30" rx="12" ry="6" transform="rotate(-40,-10,-30)"/>
+    <ellipse class="leaf" stroke-width="0.9" cx="42" cy="-58" rx="12" ry="6" transform="rotate(-55,42,-58)"/>
+    <path class="branch" stroke-width="1" d="M 55,22 C 70,-2 88,-14 108,-18"/>
+    <path class="branch" stroke-width="1" d="M 95,-5 C 112,-22 132,-32 150,-28"/>
+    <ellipse class="leaf" stroke-width="0.9" cx="108" cy="-18" rx="11" ry="5" transform="rotate(20,108,-18)"/>
+    <ellipse class="leaf" stroke-width="0.9" cx="150" cy="-28" rx="11" ry="5" transform="rotate(15,150,-28)"/>
+  </g>
+
+  <!-- ── Right top corner (mirrored) ── -->
+  <g transform="translate(1920,0) scale(-1,1) rotate(70, 0, 0)">
+    <path class="branch" stroke-width="1.5" d="M -20,60 C 60,20 120,-30 170,-80"/>
+    <path class="branch" stroke-width="1" d="M 40,34 C 30,10 10,-10 -10,-30"/>
+    <path class="branch" stroke-width="1" d="M 80,10 C 65,-12 50,-35 42,-58"/>
+    <ellipse class="leaf" stroke-width="0.9" cx="-10" cy="-30" rx="12" ry="6" transform="rotate(-40,-10,-30)"/>
+    <ellipse class="leaf" stroke-width="0.9" cx="42" cy="-58" rx="12" ry="6" transform="rotate(-55,42,-58)"/>
+    <path class="branch" stroke-width="1" d="M 55,22 C 70,-2 88,-14 108,-18"/>
+    <path class="branch" stroke-width="1" d="M 95,-5 C 112,-22 132,-32 150,-28"/>
+    <ellipse class="leaf" stroke-width="0.9" cx="108" cy="-18" rx="11" ry="5" transform="rotate(20,108,-18)"/>
+    <ellipse class="leaf" stroke-width="0.9" cx="150" cy="-28" rx="11" ry="5" transform="rotate(15,150,-28)"/>
+  </g>
+
+  <!-- ── Thin frame ── -->
+  <rect x="54" y="30" width="1812" height="1020" rx="2"
+        fill="none" stroke="#a08c72" stroke-width="0.8" opacity="0.35"/>
+  <rect x="62" y="38" width="1796" height="1004" rx="1"
+        fill="none" stroke="#a08c72" stroke-width="0.4" opacity="0.2"/>
+</svg>
+
+<!-- Main content -->
+<div class="content">
+  <div class="tagline">Приглашение на свадьбу</div>
+  <div class="divider-top"></div>
+
+  <div class="names">
+    <span class="name">Михаил</span>
+    <span class="ampersand">&amp;</span>
+    <span class="name">Дарья</span>
+  </div>
+
+  <div class="divider-bottom"></div>
+
+  <div class="date">9 · 06 · 2026</div>
+  <div class="venue">ForestDew</div>
+</div>
+
+</body>
+</html>
